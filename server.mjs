@@ -10,12 +10,12 @@ io.on('connection', (socket) => {
   const username = socket.handshake.query.username;
   console.log(`新用戶: ${username} 連接了`);
   const msg = { username, text: "加入了聊天室" };
-  socket.emit('message', msg);
+  io.emit('message', msg);
  
   socket.on('disconnect', () => {
     console.log(`用戶: ${username} 斷開連接`);
     const msg = { username, text: "離開了聊天室" };
-     socket.emit('message', msg);
+    io.emit('message', msg);
   });
 
   socket.on('message', (message) => {
