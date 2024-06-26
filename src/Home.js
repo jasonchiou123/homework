@@ -16,10 +16,12 @@ export default function Home() {
           Edit <code>src/App.js</code> and save to reload.
         </p>
         <hr /> 
-        {t('switch')} {/* 可受翻譯檔案影響的字詞 */}
+        可受翻譯的字詞: 
+        {t('title')} , {t('switch')} {/* 可受翻譯檔案影響的字詞 */}
         <hr /> 
-        {str } --{ state}  {/* 透過Context取得全域資料 */}
-        <button onClick={() => setState(1)}> 修改全域資料 </button>
+        全域變數: 
+        1={str } ,2={ state}  {/* 透過Context取得全域資料 */}
+        <button onClick={() => setState(1)}> 修改全域變數 </button>
         <hr />
         <a
           className="App-link"
