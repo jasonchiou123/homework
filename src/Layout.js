@@ -10,7 +10,7 @@ export default function Layout() {
               <Link to="/">CRA首頁</Link>
             </td>
             <td>
-              <Link to="/Chat">聊天室</Link>
+              <Link to="/Chat">聊天室(要開主機)</Link>
             </td>
             <td>
               <Link to="/Air">空氣品質</Link>
