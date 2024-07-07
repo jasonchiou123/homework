@@ -5,8 +5,8 @@ import React, { useContext } from 'react';
 import {myContext} from './Context.jsx';
 
 export default function Home() {
-  const {str, state, setState } = useContext(myContext); 
-  const { t } = useTranslation();
+  const {str, state, setState } = useContext(myContext); // 取用全域變數 
+  const { t } = useTranslation();  //  i18n翻譯函數=t 
 
   return (
     <div className="App">
@@ -20,7 +20,7 @@ export default function Home() {
         {t('title')} , {t('switch')} {/* 可受翻譯檔案影響的字詞 */}
         <hr /> 
         全域變數: 
-        1={str } ,2={ state}  {/* 透過Context取得全域資料 */}
+        1={str } ,2={ state}  {/* 透過Context取得全域變數 */}
         <button onClick={() => setState(1)}> 修改全域變數 </button>
         <hr />
         <a

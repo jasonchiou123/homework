@@ -3,7 +3,7 @@ import { Outlet, Link } from "react-router-dom";
 export default function Layout() {
   return (
     <>
-      <nav>
+      <nav>  {/* 導覽列 */}
         <table border="1" bgcolor="lightblue" align="center" >
           <tr>
             <td>
@@ -19,7 +19,7 @@ export default function Layout() {
         </table>
       </nav>
 
-      <Outlet />
+      <Outlet />  {/* 在這裡顯示上述的 路由頁面內容 */}
     </>
   )
 };
