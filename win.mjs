@@ -1,4 +1,4 @@
-import { exec } from "child_process"
+import { exec, execSync } from "child_process"
 import iconv from 'iconv-lite'  //文字轉碼
 
 //指令輸出 stdout, stderr 先轉為 binary Buffer
@@ -10,9 +10,10 @@ exec('ping www.google.com',{encoding: 'binary'},(error, stdout, stderr) => { //�
   }
   //windows 10 命令列提示字元, 中文編碼為 big5
   const output = iconv.decode(Buffer.from(stdout, 'binary'), 'big5');  //轉碼中文
-  const errorOutput = iconv.decode(Buffer.from(stderr, 'binary'), 'big5');  //轉碼中文
-  console.log(`輸出: ${output}`);
-  console.error(`錯誤: ${errorOutput}`);
+  console.log(`exec輸出: ${output}`);
 });
 
 console.log("等待輸出中...");  //所以這行會先印出
+let bin=execSync('dir',{encoding: 'binary'});
+let str=iconv.decode(Buffer.from(bin, 'binary'), 'big5');  //轉碼中文
+console.log(`execSync輸出: ${str}`);
