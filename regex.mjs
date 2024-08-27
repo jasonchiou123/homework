@@ -14,3 +14,24 @@ console.log(`全字串: ${strArray[0]} , 使用者: ${strArray[1]} , 郵件主�
 //字串取代
 let newstr = str.replace(/([\w-.]+)/, "john"); // .replace() 比對正規式後取代
 console.log(newstr); // john@gmail.com
+
+function isValidEmail(email) {
+    // 檢查是否包含 '@' 符號
+    const atSymbolIndex = email.indexOf('@');
+    if (atSymbolIndex < 1) return false;
+
+    // 檢查 '@' 後是否有 '.' 符號
+    const dotIndex = email.indexOf('.', atSymbolIndex);
+    if (dotIndex <= atSymbolIndex + 1) return false;
+
+    // 檢查 '.' 後是否有至少兩個字符
+    if (dotIndex >= email.length - 2) return false;
+
+    return true;
+}
+
+// 測試範例
+console.log(isValidEmail("test@example.com")); // true
+console.log(isValidEmail("invalid-email")); // false
+console.log(isValidEmail("another.test@domain")); // false
+console.log(isValidEmail("name@domain.co")); // true
