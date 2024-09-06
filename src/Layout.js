@@ -15,6 +15,9 @@ export default function Layout() {
             <td>
               <Link to="/Air">空氣品質</Link>
             </td>
+            <td>
+              <Link to="/Charts">占星圖</Link>
+            </td>            
           </tr>
         </table>
       </nav>

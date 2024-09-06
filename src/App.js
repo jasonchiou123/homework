@@ -6,6 +6,7 @@ import Air from './Air';  //之前用 javascript 開發的每日空污指數表
 import Layout from './Layout';  //導覽列 佈局檔案
 import NoPage from './NoPage';  //沒有找到頁面路由 path 時,顯示的頁面
 import Context from './Context.jsx';  //全域變數定義檔案
+import Charts from './Charts.jsx';
 
 //create react app 主程式起點App()
 export default function App() {
@@ -18,6 +19,7 @@ export default function App() {
           <Route index element={<Home />} />  {/* index=首頁  */}
           <Route path="/Chat" element={<Chat />} />
           <Route path="/Air" element={<Air />} />
+          <Route path="/Charts" element={<Charts />} />
           <Route path="*" element={<NoPage />} />  {/* path星號=找不到的頁面  */}
         </Route>
       </Routes>
