@@ -1,4 +1,4 @@
-import { Origin, Horoscope }  from 'circular-natal-horoscope-js';  //以時間找出行星的位置
+import { Origin, Horoscope }  from 'circular-natal-horoscope-js';  //MVC-model套件:計算行星的位置
 
 export default class natal {
   constructor(y,m,d,h,i) {  
@@ -13,7 +13,7 @@ export default class natal {
       longitude: 120.0, //經度
     });
 
-    this.horoscope = new Horoscope({    //占星參數: 專業領域暫不解釋 
+    this.horoscope = new Horoscope({    //占星參數: 專業領域就不解釋了
       origin: this.origin,
       houseSystem: "whole-sign",
       zodiac: "tropical",  //"sidereal",  

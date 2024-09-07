@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { PieChart, Pie, Cell } from 'recharts';  //MVC-view套件:圓餅圖
-import natal from "./natal.js"  //MVC-model套件:計算行星的位置
+import natal from "./natal.js"  //取得行星的位置
 
 const zodiac = [  //12個星座, value為此區塊所佔的圓餅比例
   { name: '白羊', value: 1},{ name: '金牛', value: 1},{ name: '雙子', value: 1},
@@ -10,8 +10,8 @@ const zodiac = [  //12個星座, value為此區塊所佔的圓餅比例
 ];
 
 export default function Charts() {
-  const birthRef = useRef(undefined)
   let [planet,setPlanet]= useState([]) 
+  let [birth,setBirth]= useState('')
  
   useEffect(() =>{
     let originalArray = Array.from({ length: 360 }, () => ({ name: '', value: 1 }));
@@ -20,12 +20,12 @@ export default function Charts() {
 
   //計算出行星的位置
   const calculate = () => {
-    let bir=birthRef.current.value  //取得輸入的生日
-    let y=bir.substr(0,4)
-    let m=bir.substr(5,2) 
-    let d=bir.substr(8,2)
-    let h=bir.substr(11,2)
-    let i=bir.substr(14,2)
+    let bir=birth
+    let y=bir.substring(0,4)
+    let m=bir.substring(5,7) 
+    let d=bir.substring(8,10)
+    let h=bir.substring(11,13)
+    let i=bir.substring(14,16)
     let me=new natal(y,m,d,h,i)
     let myData=me.calc()  //取得各行星資料
     
@@ -40,7 +40,7 @@ export default function Charts() {
     setPlanet(setArray)
   }
 
-  //計算圓餅文字的中點座標, 數學公式暫不解釋
+  //計算圓餅文字的中點座標, 複雜的數學公式就暫不解釋了~
   const RADIAN = Math.PI / 180;
   const charMiddle = (cx, cy,innerRadius,outerRadius,midAngle) => {
     const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
@@ -71,15 +71,16 @@ export default function Charts() {
   };
 
     return (<>
-    出生時間 : <input type="datetime-local" name="bdaytime" ref={birthRef}  />
+    出生時間 : <input type="datetime-local" name="bdaytime" 
+    value={birth} onChange={(e) => setBirth(e.target.value)} />
     <button onClick={calculate}>運算</button>
 
     <PieChart width={700} height={700}>
-{/*     cx,cy: 圓餅圖:圓心點座標
-        innerRadius,outerRadius: 圓餅圖:內外緣半徑
-        label: 圓餅圖:顯示文字函數
-        startAngle: 圓餅圖:起始角度(白羊座起始點為315度)
-        endAngle: 圓餅圖:結束角度(繞一圓圈:315+360=675度)   */}
+{/*     cx,cy: 圓心點座標, 50% = 700/2 = 350
+        innerRadius,outerRadius: 圓弧段內外緣半徑
+        label: 顯示文字之函數
+        startAngle: 圓餅圖起始角度(白羊座起始點為315度)
+        endAngle: 圓餅圖結束角度(繞一圓圈:315+360=675度)   */}
 
         <Pie data={zodiac} dataKey="value" cx="50%" cy="50%" startAngle={315} endAngle={675}
         labelLine={false} label={zodiacLabel} innerRadius={150} outerRadius={250} fill="#0088FE"  />
