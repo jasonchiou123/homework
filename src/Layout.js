@@ -17,7 +17,10 @@ export default function Layout() {
             </td>
             <td>
               <Link to="/Charts">占星圖</Link>
-            </td>            
+            </td> 
+            <td>
+              <Link to="/Three">展示3D</Link>
+            </td>                        
           </tr>
         </table>
       </nav>
