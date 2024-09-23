@@ -20,7 +20,10 @@ export default function Layout() {
             </td> 
             <td>
               <Link to="/Three">展示3D</Link>
-            </td>                        
+            </td>    
+            <td>
+              <Link to="/ML5">圖片識別AI</Link>
+            </td>                      
           </tr>
         </table>
       </nav>

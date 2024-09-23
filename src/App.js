@@ -8,6 +8,7 @@ import NoPage from './NoPage';  //沒有找到頁面路由 path 時,顯示的頁
 import Context from './Context.jsx';  //全域變數定義檔案
 import Charts from './Charts.jsx';
 import Three from './Three.jsx';
+import ImageClassifier from './ML5.jsx';
 
 //create react app 主程式起點App()
 export default function App() {
@@ -22,6 +23,7 @@ export default function App() {
           <Route path="/Air" element={<Air />} />
           <Route path="/Charts" element={<Charts />} />
           <Route path="/Three" element={<Three />} />
+          <Route path="/ML5" element={<ImageClassifier />} />
           <Route path="*" element={<NoPage />} />  {/* path星號=找不到的頁面  */}
         </Route>
       </Routes>
